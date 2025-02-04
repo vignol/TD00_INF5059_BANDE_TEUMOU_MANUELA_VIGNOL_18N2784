@@ -4,23 +4,23 @@ Algorithms for Problem Solving
 Exercise 1 - Binary Search
 
 Problem: Given a sorted array of integers, use binary search algorithm to find a target value.
+Eg: Consider input array [4,9,17,-3,107,-2,9], search value: 9. Expected result: index 6
 Solution: Binary Search works by repeatedly dividing the search space into two, comparing the searched value to the middle element to decide whether to continue search on the left or right half
-
 Code snippet: 
-def binary_search(sorted_list, target):
-    low, high = 0, len(sorted_list) - 1
-    while low <= high:
-        mid = (low + high) // 2
-        if sorted_list[mid] == target:
-            return mid
-        elif sorted_list[mid] < target:
-            low = mid + 1
+def search_binary(sorted_list, target):
+    left=0
+    right = len(sorted_list) - 1 
+    while left<=right:
+        middle=(left+right)//2
+        if sorted_list[middle]==target:
+            return middle
+        elif sorted_list[middle]<target:
+            left=middle+1
         else:
-            high = mid - 1
+            right=middle-1
     return -1
-
-Time Complexity: O(log n)
-Comparison with Linear Search: Binary Search is faster than Linear Search (complexity: O(n)).
+Result: Input(array: [4,9,17,-3,107,-2,9], target: -3). Result: index 3
+Conclusion: Binary Search is faster(O(logn)) than Linear Search (complexity: O(n)).
 
 
 Exercise 2 - Graph Traversal (BFS and DFS)
@@ -42,8 +42,8 @@ def bfs(graph, start):
                 queue.append(neighbor)
     return visited
 
-Time Complexity: O(V + E) (where V is the number of nodes, and E is the number of edges).  
-Comparison: BFS and DFS both have linear time complexity depending on the number of vertices and edges, thus, both are optimal for graph traversal.
+Result: For input graph {'X': {'Y', 'Z'},'Y': {'X'},'Z': {'X'}}, Output BFS: X Y Z
+Conclusion: BFS and DFS both have linear time complexity(O(V + E)) where V is the number of nodes, and E is the number of edges. Thus, both are optimal for graph traversal.
 
 
 Exercise 3 - Knapsack Problem (Dynamic Programming)
@@ -67,8 +67,8 @@ def knapsack(elements, W):
     choosen_elmts.reverse()
     return choosen_elmts, max_val
 
-Time Complexity: O(n * W) (where n is the number of items and W is the weight limit).
-Comparison: Using DP is faster than the brute-force approach (complexity: O(2^n)).
+Result: For input items: [(5,70),(10,120),(7,70),(5,80),(13,100)], limit weight: 200, Output: selected=(7,70),(13,100)
+Conclusion: Using DP is faster (O(n * W)) than the brute-force approach (complexity: O(2^n)).
 
 
 Exercise 4 - Merge Intervals
@@ -88,13 +88,13 @@ def merge_intervals(intervals):
             merged_intervals[-1] = (last_merged[0], max(last_merged[1], interval[1]))
     return merged_intervals
 
-Time Complexity: O(nlogn) due to sort
-Comparison: This approach is faster than brute-force approach that has time complexity of O(n^2).
+Result: Given input intervals:[(5,7),(10,13),(9,11)], Result: merged intervals:  [(5, 7), (9, 13)]
+Conclusion: This approach is faster(O(nlogn) ) than brute-force approach (O(n^2)).
 
 
 Exercise 5 - Maximum Subarray Sum (Kadane’s Algorithm)
 
-Problem: Given an array of integers, find the maximum sum of contiguous elements in the array.
+Problem: Given an array of integers, find the maximum sum of contiguous elements of sub array in the array.
 Solution: Kadane’s algorithm is used to iterate through the array while computing the sum of current subarray. If current sum is negative, reset to zero, and store maximum computed sum.
 
 Code:
@@ -108,8 +108,8 @@ def max_subarray_sum(numbers):
         max_sum = max(max_sum, current_sum)
     return max_sum
 
-Time Complexity: O(n)  
-Comparison: Kadane’s algorithm is more efficient than brute-force approach (complexity: O(n^2)). 
+Result: Given input array: [9,10,14,-4,3,-1,9], output: max__sum_sub_array=40
+Conclusion: Kadane’s algorithm is more efficient(O(n)) than brute-force approach (complexity: O(n^2)). 
 
 
 Conclusion:
